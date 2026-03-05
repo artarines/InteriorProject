@@ -1,0 +1,105 @@
+/* сел. тегів */
+html {
+    overflow-y: scroll;
+}
+
+body {
+    background-color: #90d5ea;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 20px;
+    text-align: left; 
+}
+
+h1 {
+    font-size: 28px;
+    color: #000000;
+    text-align: center; 
+}
+
+h2, h3 {
+    color: #000000;
+}
+
+/* зовнішній стиль посилань */
+a {
+    color: black; 
+    text-decoration: underline;
+}
+
+/* списки */
+ul {
+    list-style-type: square; 
+    padding-left: 40px;
+}
+
+ol {
+    list-style-type: decimal;
+    padding-left: 40px;
+}
+
+dl {
+    margin-top: 15px;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-bottom: 10px;
+}
+
+table {
+    width: auto ;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+/* сел. класів */
+
+/* фон для сторінок */
+.bg-index { background-color: #faf0e6; }
+.bg-about { background-color: #e6e6fa; }
+.bg-projects { background-color: #ffffe0; }
+.bg-contact { background-color: #e0f7fa; }
+
+.col-green { background-color: #adff2f; }
+.col-grey { background-color: #a4a4a4; }
+
+.header-pink { background-color: #db7093; }
+
+/* клас для !important */
+.text-priority {
+    color: rgb(241, 93, 197) !important;
+}
+ 
+.table-projects {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* контейнер для карти */
+#map-container {
+    text-align: center;
+}
+
+#map-container iframe {
+    border: 1px solid black;
+}
+
+/* сел. ідентифікаторів */
+#main-nav {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#map-container {
+    text-align: center;
+    margin-top: 20px;
+}
