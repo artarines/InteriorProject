@@ -61,9 +61,40 @@ th, td {
     border: 1px solid rgb(0, 0, 0);
 }
 
-/* сел. класів */
+h2 + p {
+    font-style: italic;
+    color: #555;
+    margin-top: 0;
+}
 
-/* фон для сторінок */
+dt + dd {
+    border-left: 3px solid rgb(220, 49, 106);
+    padding-left: 10px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+ul li {
+    color: #901077; 
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+dl dt {
+    color: rgb(220, 49, 106);
+    font-weight: 800;           
+    letter-spacing: 1.5px;      
+    margin-top: 25px;           
+}
+
+nav > a {
+    text-decoration: none; 
+    text-transform: uppercase; 
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+/* сел. класів */
 .bg-index { background-color: #faf0e6; }
 .bg-about { background-color: #e6e6fa; }
 .bg-projects { background-color: #ffffe0; }
@@ -74,7 +105,6 @@ th, td {
 
 .header-pink { background-color: #db7093; }
 
-/* клас для !important */
 .text-priority {
     color: rgb(241, 93, 197) !important;
 }
@@ -84,7 +114,6 @@ th, td {
     margin-bottom: 20px;
 }
 
-/* контейнер для карти */
 #map-container {
     text-align: center;
 }
@@ -103,3 +132,4 @@ th, td {
     text-align: center;
     margin-top: 20px;
 }
+
