@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
@@ -93,5 +93,229 @@
             alert("Гарного перегляду нашого портфоліо!");
         }
         </script>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Mariia Kv">
+    <title>Інтер'єр - Головна</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        a { color: rgb(220, 49, 106); }
+
+        /* ---- стилі для лабораторної ---- */
+        .lab-section {
+            border: 2px dashed #901077;
+            padding: 20px;
+            margin: 30px 0;
+            background: #fff8fe;
+            border-radius: 8px;
+        }
+        .lab-section h3 {
+            color: #901077;
+            margin-top: 0;
+        }
+        .lab-btn {
+            background: #901077;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            margin: 6px 4px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 15px;
+            font-family: Georgia, serif;
+        }
+        .lab-btn:hover { background: #b1008b; }
+        .lab-btn:disabled { background: #aaa; cursor: default; }
+
+        /* підсвітка від поведінки */
+        .behavior-highlight {
+            outline: 3px solid #f97fde;
+            background: #fff0fb !important;
+        }
+
+        /* підсвітка активного <li> */
+        #services-list-lab li {
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        #services-list-lab li:hover { background: #ffe6f9; }
+
+        /* меню кнопок делегування */
+        #action-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="bg-index">
+    <header>
+        <h1>Gapchinska interior: Сучасність та Затишок</h1>
+        <h1>Головна</h1>
+        <nav id="main-nav">
+            <a href="index.html">Головна</a> | <a href="projects.html">Наші роботи</a> | <a href="about.html">Про автора</a> | <a href="contact.html">Контакти</a>
+        </nav>
+    </header>
+    <main>
+        <div class="promo-box">
+            <h4>Акція</h4>
+            <p>Перша консультація за <span>0</span> грн!</p>
+        </div>
+
+        <h2>Ласкаво просимо до портфоліо!</h2>
+        <p style="font-size: 18px;">Ми створюємо простір, у якому хочеться жити. Кожен проєкт — це поєднання <b>функціональності</b> та <i>естетики</i>.</p>
+        <p class="text-priority">Наші дизайнери працюють з найкращими матеріалами, щоб забезпечити затишок у вашій оселі.</p>
+
+        <h3>Наші послуги:</h3>
+        <ul class="services-list">
+            <li>Планування простору</li>
+            <li>Підбір меблів</li>
+            <li>3D-візуалізація інтер'єру</li>
+            <li>Розробка технічних креслень</li>
+            <li>Світловий дизайн</li>
+        </ul>
+
+        <h3>Процес роботи:</h3>
+        <ol>
+            <li>Знайомство та первинна консультація</li>
+            <li>Обміри приміщення та складання технічного завдання</li>
+            <li><a href="#styles">Створення концепції та мудборду</a></li>
+            <li>Розробка ескізного проєкту та 3D-візуалізація</li>
+            <li>Підготовка пакету робочих креслень для будівельників</li>
+            <li>Комплектація: підбір реальних меблів, світла та матеріалів</li>
+            <li>Авторський нагляд за ходом ремонтних робіт</li>
+            <li>Фінальне декорування та професійна фотозйомка</li>
+        </ol>
+
+        <h3>Прайс-лист послуг:</h3>
+        <table>
+            <tr><th colspan="2" class="col-green">Послуга та орієнтовна вартість</th></tr>
+            <tr><td class="col-green">Первинна консультація</td><td class="col-grey">Безкоштовно</td></tr>
+            <tr><td class="col-green">Обміри та ТЗ</td><td class="col-grey">від 2000 грн</td></tr>
+            <tr><td class="col-green">3D-візуалізація</td><td class="col-grey">від 150 грн/м²</td></tr>
+            <tr><td rowspan="2" class="col-green">Пакет "Технічний"</td><td class="col-grey">300 грн/м²</td></tr>
+            <tr><td class="col-grey">Термін: 14 днів</td></tr>
+            <tr><td class="col-green">Авторський нагляд</td><td class="col-grey">від 5000 грн/міс</td></tr>
+            <tr><td class="col-green">Фотозйомка об'єкта</td><td class="col-grey">договірна</td></tr>
+        </table>
+
+        <h3 id="styles">Стилі, з якими працюємо:</h3>
+        <dl>
+            <dt>Скандинавський стиль</dt><dd>Мінімалізм, природні матеріали та велика кількість світла.</dd>
+            <dt>Класика та Неокласика</dt><dd>Симетрія, витончені лінії та стримана розкіш.</dd>
+            <dt>Лофт (Loft)</dt><dd>Відкриті простори, цегляні стіни та поєднання грубих текстур із сучасним декором.</dd>
+            <dt>Мінімалізм</dt><dd>Максимум вільного простору, чисті лінії та відсутність зайвих деталей.</dd>
+            <dt>Джапанді (Japandi)</dt><dd>Унікальне поєднання японської естетики та скандинавського затишку.</dd>
+            <dt>Арт-деко</dt><dd>Сміливі геометричні форми, дорогі матеріали та яскраві акценти.</dd>
+        </dl>
+
+        <!-- 7 ПОДІЇ JS-->
+
+        <div class="lab-section">
+            <h3>Основи нашого дизайну</h3>
+            <p>Дізнайтеся більше про філософію Gapchinska interior. Натисніть кнопку, щоб отримати коротку пораду щодо організації простору від нашої студії.</p>
+            <!-- обробник через атрибут -->
+            <button class="lab-btn" onclick="handleAttrClick()">
+                ✨ Отримати пораду дизайнера
+            </button>
+        </div>
+
+        <div class="lab-section">
+            <h3>Бюджет проєкту</h3>
+            <p>Бажаєте дізнатися базовану вартість дизайн-проєкту? Ця кнопка допоможе розрахувати орієнтовну ціну.</p>
+            
+            <button class="lab-btn" id="btn-prop">
+                📋 Розрахувати вартість проєкту
+            </button>
+        </div>
+
+        <div class="lab-section">
+            <h3>Зв'язок з архітектором</h3>
+            <p>Замовте дзвінок від нашого провідного архітектора Олексія Чернова. Система зафіксує вашу заявку та миттєво підтвердить її прийняття.</p>
+            
+            <button class="lab-btn" id="btn-multi">
+                📞 Замовити зворотний дзвінок
+            </button>
+        </div>
+
+        <div class="lab-section">
+            <h3>Контактна інформація та розсилка</h3>
+            <p>Отримайте прямі контакти нашого офісу або керуйте своїми підписками на новини студії.</p>
+            
+            <button class="lab-btn" id="btn-obj">📍 Контакти студії</button>
+            
+            <button class="lab-btn" id="btn-remove-target">Отримати спецпропозицію</button>
+            <button class="lab-btn" id="btn-remove" style="background: #555;">Скасувати підписку</button>
+        </div>
+
+        <div class="lab-section">
+            <h3>Формування пакету послуг</h3>
+            <p>Клікніть на будь-яку послугу зі списку нижче, щоб виділити її для додавання у ваш персональний пакет креслень.</p>
+            
+            <ul id="services-list-lab">
+                <li>Планування простору</li>
+                <li>Підбір меблів та декору</li>
+                <li>3D-візуалізація інтер'єру</li>
+                <li>Розробка технічних креслень</li>
+                <li>Світловий дизайн</li>
+                <li>Авторський нагляд</li>
+            </ul>
+        </div>
+
+        <div class="lab-section">
+            <h3>Панель клієнта</h3>
+            <p>Швидка навігація основними розділами нашої студії.</p>
+            
+            <div id="action-menu">
+                <button class="lab-btn" data-action="consultation">Консультація</button>
+                <button class="lab-btn" data-action="portfolio">Портфоліо</button>
+                <button class="lab-btn" data-action="contact">Контакти</button>
+                <button class="lab-btn" data-action="price">Прайс-лист</button>
+            </div>
+        </div>
+
+        <div class="lab-section" id="behavior-demo-box">
+            <h3>Інтерактивний простір</h3>
+            <p>Налаштуйте інтерфейс сайту під себе та дізнайтеся більше про нашу історію.</p>
+
+            <p><b>Фокусування на акціях:</b></p>
+            <button class="lab-btn"
+                    data-behavior="highlight-box"
+                    data-target="behavior-demo-box">
+                💡 Акцентувати увагу на секції
+            </button>
+
+            <p><b>Історія створення студії:</b></p>
+            <button class="lab-btn"
+                    data-behavior="show-info"
+                    data-target="hidden-info">
+                📖 Більше про Gapchinska interior
+            </button>
+            <div id="hidden-info" hidden style="background:#ffe6f9; padding:10px; margin-top:8px; border-radius:4px; border-left: 4px solid #db7093;">
+                🏠 Наша студія була заснована з метою поєднати естетику класичного мистецтва та сучасну функціональність. Ми віримо, що кожен квадратний метр вашої оселі має працювати на ваш комфорт.
+            </div>
+
+            <p><b>Оцінка нашого стилю:</b></p>
+            <input class="lab-btn" type="button"
+                   data-behavior="counter"
+                   data-count="0"
+                   value="❤️ Оцінити портфоліо: 0">
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>

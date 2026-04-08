@@ -1,141 +1,211 @@
-// функція діалогу з користувачем
-function userDialogue() {
-    let budget;
-    let attempts = 0;
-
-    // цикл: питаємо бюджет, поки не введуть число (макс. 3 спроби)
-    while (attempts < 3) {
-        budget = prompt("Який ваш орієнтовний бюджет на ремонт (грн)?");
-        
-        if (budget === null) break; // якщо "скасувати"
-
-        if (!isNaN(budget) && budget > 0) {
-            // умовне розгалуження
-            if (budget < 50000) {
-                alert("Ми підберемо для вас чудові бюджетні рішення!");
-            } else {
-                alert("Ми запропонуємо вам преміальний дизайн-проєкт!");
-            }
-            break; 
-        } else {
-            attempts++;
-            alert("Будь ласка, введіть коректне число. Спроба " + attempts + " з 3.");
-        }
-    }
-}
-//викликаємо 
-userDialogue();
-
-
-
-//функцію виводу інформації про розробника 
-function showDeveloperInfo(lastName, firstName, position = "Веб-розробник") {
-    alert("Інформація про розробника:\nПрізвище: " + lastName + "\nІм'я: " + firstName + "\nПосада: " + position);
-}
-
-showDeveloperInfo("Гапчинська", "Марія", "Дизайнер інтер'єрів");
-
-showDeveloperInfo("Гапчинська", "Марія");
-
-//функція порівняння довжини рядків
-function compareStrings(str1, str2) {
-    if (str1.length > str2.length) {
-        alert("Довший рядок: " + str1);
-    } else if (str2.length > str1.length) {
-        alert("Довший рядок: " + str2);
-    } else {
-        alert("Рядки мають однакову довжину.");
-    }
-}
-compareStrings("Інтер'єр", "Дизайн");
-
-
-//зміна фону на 30 секунд
-let originalBg = document.body.style.backgroundColor;
-document.body.style.backgroundColor = "#ef1deb"; 
-
-setTimeout(() => {
-    document.body.style.backgroundColor = originalBg;
-    alert("30 секунд минуло, фон повернуто до початкового!");
-}, 30000);
-
-//функція перенаправлення
-function redirectToGoogle() {
-    let go = confirm("Перейти на сторінку Google?");
-    if (go) {
-        location.href = "https://www.google.com";
-    }
-}
-redirectToGoogle(); 
-
 // getElementById — шукаємо навігацію по id
 let nav = document.getElementById("main-nav");
-console.log("getElementById → знайдено:", nav);
+if (nav) {
+    console.log("getElementById → знайдено:", nav);
 
-// querySelectorAll — шукаємо всі посилання в навігації
-let links = document.querySelectorAll("#main-nav a");
-console.log("querySelectorAll → кількість посилань:", links.length);
-links.forEach(link => console.log("посилання:", link.textContent));
+    let links = document.querySelectorAll("#main-nav a");
+    console.log("querySelectorAll → кількість посилань:", links.length);
+    links.forEach(link => console.log("посилання:", link.textContent));
 
+    console.log("innerHTML:", nav.innerHTML);
+    console.log("outerHTML:", nav.outerHTML);
+    console.log("textContent:", nav.textContent);
 
+    let textNode = nav.firstChild;
+    if (textNode) console.log("data текстового вузла:", textNode.data);
+}
 
-//використати наступні властивості DOM-вузла: innerHTML, outerHTML, nodeValue / data, textContent.
-// innerHTML — HTML-вміст навігації
-console.log("innerHTML:", nav.innerHTML);
-// outerHTML — елемент разом із самим тегом
-console.log("outerHTML:", nav.outerHTML);
-// textContent — тільки текст без тегів
-console.log("textContent:", nav.textContent);
-// nodeValue / data — для текстового вузла
-// firstChild навігації — це текстовий вузол (пробіл між тегами)
-let textNode = nav.firstChild;
-console.log("data текстового вузла:", textNode.data);
+// Лабораторна 7 - Події миші
 
+// --- 1а. Обробник через атрибут HTML ---
+// (функція викликається через onclick="handleAttrClick()" у HTML)
+function handleAttrClick() {
+    alert("Порада від дизайнера: Природне світло візуально розширює простір. Використовуйте дзеркала навпроти вікон, щоб зробити кімнату світлішою!");
+}
 
+// --- 1б. Обробник через властивість DOM-елемента ---
+// чек завантаження сторінки
+document.addEventListener("DOMContentLoaded", function () {
 
+    // ---- 1б через властивість .onclick ----
+    let btnProp = document.getElementById("btn-prop");
+    if (btnProp) {
+        btnProp.onclick = function () {
+            //тут обробник через властивість
+            alert("Орієнтовна вартість базового дизайн-проєкту (пакет 'Технічний'): від 300 грн/м².");
+        };
+    }
 
+    // ---- 1в: addEventListener — кілька обробників на одну подію ----
+    let btnMulti = document.getElementById("btn-multi");
+    if (btnMulti) {
 
+        function handlerFirst() {
+            // перший обробник (візуальний ефект + лог)
+            console.log("CRM-система: Заявку на зворотний дзвінок успішно створено.");
+            btnMulti.style.background = "#f97fde";
+            btnMulti.style.transition = "background 0.3s";
+            setTimeout(() => { btnMulti.style.background = ""; }, 1000);
+        }
 
-document.write("<p style='text-align:center; color:#888;'>© Gapchinska Interior Studio</p>");
+        function handlerSecond() {
+            // другий обробник на ту ж саму подію (повідомлення)
+            alert("Дякуємо! Наш провідний архітектор Олексій Чернов зателефонує вам найближчим часом.");
+        }
 
-//створення (елемента div)
-let card = document.createElement("div");
-card.style.cssText = "border:2px solid #c8a96e; padding:15px; margin:20px auto; max-width:380px; background:#fdf6ee; text-align:center; border-radius:8px;";
-card.innerHTML = "<p><b>Ім'я:</b> Марія Гапчинська</p><p><b>Посада:</b> Дизайнер інтер'єрів</p>";
+        btnMulti.addEventListener("click", handlerFirst);
+        btnMulti.addEventListener("click", handlerSecond);
+    }
 
-//створення (елемента h3 та текстового вузла)
-let cardHeading = document.createElement("h3");
-let headingText = document.createTextNode("Розробник сторінки");
-cardHeading.style.color = "#7a4f2e";
-cardHeading.appendChild(headingText);
+    // ---- 1г: Обробник-об'єкт з handleEvent + event.currentTarget ----
+    let btnObj = document.getElementById("btn-obj");
 
-let main = document.querySelector("main");
+    // Об'єкт-обробник
+    const mouseHandler = {
+        //використання спеціального методу handleEvent
+        handleEvent(event) {
+            alert("Контакти студії 'Gapchinska interior':\nм. Київ, вул. Володимирська, 10\nEmail: artarines@gmail.com\nТелефон: +38 (067) 000-00-00");
+        }
+    };
 
-//вствка(додаємо заголовок на початок картки)
-card.prepend(cardHeading);
-//вставка(додаємо саму картку в кінець <main>)
-main.append(card);
+    if (btnObj) {
+        btnObj.addEventListener("click", mouseHandler);
+    }
 
-let banner = document.createElement("p");
-banner.textContent = "Акція: перша консультація безкоштовно!";
-banner.style.cssText = "background:#ffe0f0; padding:8px; text-align:center; color:#dc316a;";
+    // ---- 1д: Видалення обробника через removeEventListener ----
+    let btnRemove = document.getElementById("btn-remove");
+    let btnRemoveTarget = document.getElementById("btn-remove-target");
 
-//вставка вузла (додаємо банер відразу ПІСЛЯ елемента nav)
-nav.after(banner);
+    // Обробник, який потім видалю
+    function removableHandler() {
+        alert("Спецпропозиція: Отримайте безкоштовний мудборд при замовленні повного дизайн-проєкту до кінця місяця!");
+    }
 
-setTimeout(() => {
-    let newBanner = document.createElement("p");
-    newBanner.textContent = "Зв'яжіться з нами: artarines@gmail.com";
-    newBanner.style.cssText = "background:#e0f0e8; padding:8px; text-align:center; color:#2a7a4f;";
-    
-    //заміна вузла (старий banner замінюється на newBanner)
-    banner.replaceWith(newBanner);
-    console.log("replaceWith → банер замінено");
-}, 5000);
+    if (btnRemoveTarget) {
+        btnRemoveTarget.addEventListener("click", removableHandler);
+    }
 
-setTimeout(() => {
-    //видалення вузла: (картка повністю видаляється з DOM)
-    card.remove();
-    console.log("remove → картку розробника видалено");
-}, 15000);
+    if (btnRemove) {
+        btnRemove.addEventListener("click", function () {
+            if (btnRemoveTarget) {
+                // видаляє обробник, використовуючи ту саму функцію
+                btnRemoveTarget.removeEventListener("click", removableHandler);
+                
+                // візуальна позначка скасування
+                this.textContent = "✓ Підписку скасовано";
+                this.disabled = true;
+                btnRemoveTarget.style.opacity = "0.5";
+                
+                alert("Ви успішно відмовилися від отримання спецпропозицій. Розсилку зупинено.");
+            }
+        });
+    }
 
+    //2а gідсвічування елементів списку
+    //Обробник на батьківському <UL>, використання event.target
+
+    let servicesList = document.getElementById("services-list-lab");
+    let highlightedItem = null;
+
+    if (servicesList) {
+        servicesList.onclick = function (event) {
+            // nтут event.target визначає конкретний <li>, на який клікнули
+            let target = event.target;
+
+            // якщо клік не по <li> — ігнор
+            if (target.tagName !== "LI") return;
+
+            // знімає стилі з попередньо обраного елемента
+            if (highlightedItem) {
+                highlightedItem.style.background = "";
+                highlightedItem.style.fontWeight = "";
+                highlightedItem.style.color = "";
+            }
+
+            //підсвітка пот. елемент
+            target.style.background = "#f97fde";
+            target.style.fontWeight = "bold";
+            target.style.color = "#5a0050";
+            highlightedItem = target;
+
+            console.log("Додано до попереднього розрахунку:", target.textContent);
+        };
+    }
+
+    //2б меню з data-action та делегування
+    //один обробник на контейнер, виклик методів за атрибутом
+    class DesignMenu {
+        constructor(elem) {
+            this._elem = elem;
+            elem.onclick = this.onClick.bind(this);
+        }
+
+        // методи, що відповідають за пункти меню
+        consultation() {
+            alert("Залиште свій номер телефону, і ми зв'яжемося з вами для призначення першої безкоштовної зустрічі.");
+        }
+        portfolio() {
+            alert("Завантаження галереї проєктів... (Тут відкриється сторінка з нашими найкращими роботами у стилі Джапанді та Неокласика).");
+        }
+        contact() {
+            alert("Зв'язатися з нами:\nEmail: artarines@gmail.com\nРобочі години: Пн-Пт, 10:00 - 19:00");
+        }
+        price() {
+            alert("Прайс-лист студії:\nКонсультація — безкоштовно\nОбміри та ТЗ — від 2000 грн\nПакет креслень — 300 грн/м²");
+        }
+
+        //єдиний обробник/(делегування)
+        onClick(event) {
+            let action = event.target.dataset.action;
+            if (action && typeof this[action] === "function") {
+                this[action]();
+            }
+        }
+    }
+
+    let menuElem = document.getElementById("action-menu");
+    if (menuElem) {
+        new DesignMenu(menuElem);
+    }
+
+    //2в прийом «Поведінка»
+    // делегування на рівні document через data-behavior
+
+    document.addEventListener("click", function (event) {
+
+        // поведінка 1: підсвітка блоку
+        if (event.target.dataset.behavior === "highlight-box") {
+            let targetId = event.target.dataset.target;
+            let box = document.getElementById(targetId);
+            if (box) {
+                box.classList.toggle("behavior-highlight");
+                //зміна тексту кнопки
+                event.target.textContent = box.classList.contains("behavior-highlight")
+                    ? "💡 Зняти акцент"
+                    : "💡 Акцентувати увагу на секції";
+            }
+        }
+
+        // поведінка 2: показ/сховати текст (історія студії)
+        if (event.target.dataset.behavior === "show-info") 
+        {
+            let targetId = event.target.dataset.target;
+            let infoBlock = document.getElementById(targetId);
+            if (infoBlock) {
+                infoBlock.hidden = !infoBlock.hidden;
+                //зміна тексту кнопки
+                event.target.textContent = infoBlock.hidden
+                    ? "📖 Більше про Gapchinska interior"
+                    : "📖 Сховати історію";
+            }
+        }
+
+        // Поведінка 3: лічильник (оцінка портфоліо)
+        if (event.target.dataset.behavior === "counter") {
+            event.target.dataset.count = (+event.target.dataset.count || 0) + 1;
+     
+            event.target.value = "❤️ Оцінити портфоліо: " + event.target.dataset.count;
+        }
+    });
+
+});
