@@ -7,6 +7,75 @@
     <link rel="stylesheet" href="style.css">
         <style>
         a { color: green; } 
+
+        /* --- фото-картки --- */
+        #gallery-area {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            border: 2px dashed #db7093;
+            border-radius: 10px;
+            background: #fff8fe;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+
+        .photo-card {
+            position: absolute;
+            width: 160px;
+            cursor: grab;
+            border: 3px solid #db7093;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 2px 4px 10px rgba(144,16,119,0.15);
+            overflow: hidden;
+            transition: box-shadow 0.2s, border-color 0.2s;
+            user-select: none;
+        }
+
+        /* mouseover стиль для картки */
+        .photo-card.card-hovered {
+            border-color: #901077;
+            box-shadow: 0 0 0 3px #f97fde, 2px 4px 14px rgba(144,16,119,0.3);
+        }
+
+        .photo-card img {
+            width: 100%;
+            display: block;
+            pointer-events: none; /* щоб браузерний drag на img не заважав */
+        }
+
+        .photo-card .card-label {
+            text-align: center;
+            font-size: 12px;
+            font-family: Georgia, serif;
+            color: #901077;
+            padding: 5px 4px;
+            background: #fff0fb;
+        }
+
+        .lab-section {
+            border: 2px dashed #901077;
+            padding: 20px;
+            margin: 30px 0;
+            background: #fff8fe;
+            border-radius: 8px;
+        }
+        .lab-section h3 {
+            color: #901077;
+            margin-top: 0;
+            font-style: normal;
+        }
+
+        /* лог подій */
+        #mouse-log {
+            font-family: monospace;
+            font-size: 13px;
+            color: #555;
+            margin-top: 10px;
+            min-height: 20px;
+        }
+    </style>
     </style>
     <script src="script.js" defer></script>
 </head>
@@ -32,6 +101,51 @@
         </p>
 
         <p>Дізнатися більше <a href="about.html#office">про адресу нашого офіса</a>.</p>
+        
+        <!-- ЛБ 8 -->
+
+        <div class="lab-section">
+            <h3>Створіть свій муд борд [Drag'n'Drop — перетягування фото карток]</h3>
+
+            <div id="gallery-area">
+
+                <div class="photo-card" style="left: 20px; top: 20px;">
+                    <img src="8 (1).jfif" alt="Фото 1">
+                </div>
+
+                <div class="photo-card" style="left: 210px; top: 20px;">
+                    <img src="8 (2).jfif" alt="Фото 2">
+                </div>
+
+                <div class="photo-card" style="left: 400px; top: 20px;">
+                    <img src="8 (3).jfif" alt="Фото 3">
+                </div>
+
+                <div class="photo-card" style="left: 30px; top: 50px;">
+                    <img src="8 (4).jfif" alt="Фото 4">
+                </div>
+
+                <div class="photo-card" style="left: 250px; top: 175px;">
+                    <img src="8 (5).jfif" alt="Фото 5">
+                </div>
+
+                <div class="photo-card" style="left: 500px; top: 150px;">
+                    <img src="8 (6).jfif" alt="Фото 6">
+                </div>
+
+                <div class="photo-card" style="left: 700px; top: 80px;">
+                    <img src="8 (7).jfif" alt="Фото 7">
+                </div>
+
+                <div class="photo-card" style="left: 304px; top: 90px;">
+                    <img src="8 (8).jfif" alt="Фото 8">
+                </div>
+
+                <div class="photo-card" style="left: 1000px; top: 80px;">
+                    <img src="8 (9).jfif" alt="Фото 9">
+                </div>
+            </div>
+        </div>
     </main>
 </body>
-</html>
+</html> 

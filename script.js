@@ -208,4 +208,95 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+// 8 лаба
+// --- Drag'n'Drop фото-карток ---
+
+    let galleryArea = document.getElementById("gallery-area");
+
+    if (galleryArea) {
+
+        let dragCard  = null;  // картка яку зараз тягнемо
+        let shiftX    = 0;
+        let shiftY    = 0;
+
+        // mousedown на будь-якій картці всередині gallery-area
+        galleryArea.addEventListener("mousedown", function (event) {
+            // знаходимо картку по якій клікнули (або її дочірній елемент)
+            let card = event.target.closest(".photo-card");
+            if (!card) return;
+
+            dragCard = card;
+
+            shiftX = event.clientX - card.getBoundingClientRect().left;
+            shiftY = event.clientY - card.getBoundingClientRect().top;
+
+            // піднімаємо картку поверх інших
+            card.style.zIndex = 10;
+            card.style.cursor = "grabbing";
+            card.style.boxShadow = "0 8px 24px rgba(144,16,119,0.35)";
+            card.style.transform = "rotate(2deg)";
+
+            event.preventDefault();
+        });
+
+        // mousemove — рухаємо картку
+        galleryArea.addEventListener("mousemove", function (event) {
+            if (!dragCard) return;
+
+            let areaRect = galleryArea.getBoundingClientRect();
+
+            let newLeft = event.clientX - areaRect.left - shiftX;
+            let newTop  = event.clientY - areaRect.top  - shiftY;
+
+            // не даємо картці вийти за межі поля
+            newLeft = Math.max(0, Math.min(newLeft, galleryArea.offsetWidth  - dragCard.offsetWidth));
+            newTop  = Math.max(0, Math.min(newTop,  galleryArea.offsetHeight - dragCard.offsetHeight));
+
+            dragCard.style.left = newLeft + "px";
+            dragCard.style.top  = newTop  + "px";
+        });
+
+        // mouseup — відпускаємо картку
+        galleryArea.addEventListener("mouseup", function () {
+            if (!dragCard) return;
+
+            dragCard.style.zIndex   = "";
+            dragCard.style.cursor   = "grab";
+            dragCard.style.boxShadow = "";
+            dragCard.style.transform = "";
+
+            dragCard = null;
+        });
+
+        // якщо курсор вийшов за межі поля — скидаємо
+        galleryArea.addEventListener("mouseleave", function () {
+            if (!dragCard) return;
+
+            dragCard.style.zIndex    = "";
+            dragCard.style.cursor    = "grab";
+            dragCard.style.boxShadow = "";
+            dragCard.style.transform = "";
+
+            dragCard = null;
+        });
+
+        // mouseover/mouseout на картках — підсвітка рамки
+        galleryArea.addEventListener("mouseover", function (event) {
+            let card = event.target.closest(".photo-card");
+            if (!card) return;
+            card.classList.add("card-hovered");
+        });
+
+        galleryArea.addEventListener("mouseout", function (event) {
+            let card = event.target.closest(".photo-card");
+            if (!card) return;
+            if (card.contains(event.relatedTarget)) return;
+            card.classList.remove("card-hovered");
+        });
+
+        // блокуємо вбудований drag браузера на зображеннях
+        galleryArea.addEventListener("dragstart", function () {
+            return false;
+        });
+    }
 });
